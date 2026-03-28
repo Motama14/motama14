@@ -1,0 +1,145 @@
+:root {
+    --details: #2b2b2b;
+    --lighter-white: rgb(221, 221, 221);
+    --simple-text: #aaa;
+    --dark-red: #a22;
+    --red: #f22;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    margin: 0 2%;
+    box-sizing: border-box;
+}
+
+.img {
+    position: fixed;
+    top: 15%;
+    left: 30%;
+    z-index: -1;
+    transform: rotate(-8deg);
+    width: 60%;
+}
+
+.img2 {
+    position: fixed;
+    top: 15%;
+    left: 30%;
+    z-index: -1;
+    transform: rotate(8deg) scaleX(-1);
+    width: 60%;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 20px 0;
+    align-items: center;
+}
+
+nav.scrolled {
+    border-bottom: 1px solid var(--details);
+}
+
+nav a, button {
+    margin: 0 2%;
+    text-decoration: none;
+    color: var(--simple-text);
+    font-family: monospace;
+    font-size: 1.25rem;
+}
+
+nav a:hover {
+    color: var(--red);
+    animation-name: nav_hover;
+    animation-duration: 0.25s;
+}
+
+nav button {
+    background-color: var(--dark-red);
+    border: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    color: var(--lighter-white);
+}
+
+nav button:hover {
+    color: var(--dark-red);
+    background-color: white;
+    animation-name: button_hover;
+    animation-duration: 0.25s;
+}
+
+.hero h1 {
+    color: white;
+    font-family: 'Syne';
+    font-weight: 800;
+    font-size: 5rem;
+    margin-top: 15%;
+    position: relative;
+    z-index: 1;
+    mix-blend-mode: difference;
+}
+
+.hero-desc p {
+    color: var(--simple-text);
+    font-size: x-large;
+    font-family: monospace;
+    margin-bottom: 10px;
+}
+
+.hero-desc p strong {
+    text-shadow: 1px 1px 10px var(--red);
+}
+
+.hero-desc a {
+    color: var(--simple-text);
+    font-size: medium;
+    text-decoration: none;
+    border-bottom: 1px solid var(--red);
+}
+
+.hero-desc a:hover {
+    color: var(--red);
+    animation-name: nav_hover;
+    animation-duration: 0.25s;
+}
+
+.hero-links {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.download-cv {
+    margin: 0;
+    color: white;
+    background-color: var(--red);
+    font-size: x-large;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.hero i {
+    color: var(--red);
+    font-size: 2em;
+}
+
+
+@keyframes button_hover {
+    0% {color: white; background-color: var(--dark-red);}
+    100% {color: var(--dark-red); background-color: white;}
+}
+
+@keyframes nav_hover {
+    0% {color: white;}
+    100% {color: var(--red)}
+}
