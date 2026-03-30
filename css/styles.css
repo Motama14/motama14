@@ -1,46 +1,72 @@
 :root {
+    --bg: black;
     --details: #2b2b2b;
     --lighter-white: rgb(221, 221, 221);
     --simple-text: #aaa;
-    --dark-red: #a22;
-    --red: #f22;
+    --dark-main: #a22;
+    --main: #f22;
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease, text-shadow 0.5s ease;
 }
 
 * {
     margin: 0;
     padding: 0;
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease, text-shadow 0.5s ease;
+}
+
+*.light {
+    --main: rgb(253, 104, 188);
+    --dark-main: rgb(218, 90, 163);
+    --simple-text: #6a6a6a;
 }
 
 body {
-    background-color: black;
+    background-color: var(--bg);
     margin: 0 2%;
     box-sizing: border-box;
 }
 
-.img {
-    position: fixed;
-    top: 15%;
-    left: 30%;
-    z-index: -1;
-    transform: rotate(-8deg);
-    width: 60%;
-}
-
-.img2 {
-    position: fixed;
-    top: 15%;
-    left: 30%;
-    z-index: -1;
-    transform: rotate(8deg) scaleX(-1);
-    width: 60%;
+body.light {
+    --bg: white;
 }
 
 nav {
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
     padding: 20px 0;
     align-items: center;
+}
+
+.main-nav {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav div i {
+    color: var(--main);
+    margin: 0;
+    padding: 6px;
+}
+
+nav div i:hover {
+    border-radius: 10px;
+    box-shadow: 0 0 15px white;
+    animation-name: toggle_hover;
+    animation-duration: 0.5s;
+}
+
+nav div i.light {
+    color: var(--main);
+}
+
+nav div i.light:hover {
+    border-radius: 10px;
+    box-shadow: 0 0 15px black;
+    animation-name: toggle_hover_light;
+    animation-duration: 0.5s;
 }
 
 nav.scrolled {
@@ -48,7 +74,6 @@ nav.scrolled {
 }
 
 nav a, button {
-    margin: 0 2%;
     text-decoration: none;
     color: var(--simple-text);
     font-family: monospace;
@@ -56,13 +81,23 @@ nav a, button {
 }
 
 nav a:hover {
-    color: var(--red);
+    color: var(--main);
     animation-name: nav_hover;
     animation-duration: 0.25s;
 }
 
+nav a.light {
+    color: var(--simple-text);
+}
+
+nav a.light:hover {
+    color: var(--main);
+    animation-name: nav_hover_light;
+    animation-duration: 0.25s;
+}
+
 nav button {
-    background-color: var(--dark-red);
+    background-color: var(--dark-main);
     border: none;
     padding: 5px 20px;
     border-radius: 5px;
@@ -70,11 +105,21 @@ nav button {
 }
 
 nav button:hover {
-    color: var(--dark-red);
+    color: var(--dark-main);
     background-color: white;
-    animation-name: button_hover;
+    animation-name: contact_button_hover;
     animation-duration: 0.25s;
 }
+
+nav button.light:hover {
+    color: var(--main);
+    box-shadow: 0 0 15px black;
+    animation-name: contact_button_hover_light;
+    animation-duration: 0.5s;
+}
+
+
+
 
 .hero h1 {
     color: white;
@@ -84,7 +129,10 @@ nav button:hover {
     margin-top: 15%;
     position: relative;
     z-index: 1;
-    mix-blend-mode: difference;
+}
+
+.hero h1.light {
+    color: black;
 }
 
 .hero-desc p {
@@ -94,19 +142,32 @@ nav button:hover {
     margin-bottom: 10px;
 }
 
+.hero-desc p.light {
+    color: var(--simple-text);
+}
+
 .hero-desc p strong {
-    text-shadow: 1px 1px 10px var(--red);
+    text-shadow: 1px 1px 10px var(--main);
+}
+
+.hero-desc p.light strong {
+    text-shadow: 1px 1px 5px var(--main);
 }
 
 .hero-desc a {
     color: var(--simple-text);
     font-size: medium;
     text-decoration: none;
-    border-bottom: 1px solid var(--red);
+    border-bottom: 1px solid var(--main);
+}
+
+.hero-desc a.light {
+    color: var(--simple-text);
+    border-bottom: 1px solid var(--main);
 }
 
 .hero-desc a:hover {
-    color: var(--red);
+    color: var(--main);
     animation-name: nav_hover;
     animation-duration: 0.25s;
 }
@@ -121,25 +182,112 @@ nav button:hover {
 .download-cv {
     margin: 0;
     color: white;
-    background-color: var(--red);
+    background-color: var(--main);
     font-size: x-large;
     padding: 5px 15px;
     border: none;
     border-radius: 5px;
 }
 
+.download-cv:hover {
+    color: var(--dark-main); 
+    background-color: white;
+    animation-name: cv_button_hover;
+    animation-duration: 0.5s;
+}
+
+.download-cv.light {
+    color: white;
+    background-color: var(--main);
+}
+
+.download-cv.light:hover {
+    color: var(--main);
+    background-color: white;
+    box-shadow: 0 0 15px black;
+    animation-name: cv_button_hover_light;
+    animation-duration: 0.5s;
+}
+
 .hero i {
-    color: var(--red);
+    color: var(--main);
     font-size: 2em;
 }
 
+.hero i:hover {
+    color: white;
+}
 
-@keyframes button_hover {
-    0% {color: white; background-color: var(--dark-red);}
-    100% {color: var(--dark-red); background-color: white;}
+i.light {
+    color: var(--main);
+}
+
+.hero i.light:hover {
+    color: black;
+}
+
+
+@keyframes contact_button_hover {
+    0% {color: white; background-color: var(--dark-main);}
+    100% {color: var(--dark-main); background-color: white;}
+}
+
+@keyframes cv_button_hover {
+    0% {color: white; background-color: var(--main);}
+    100% {color: var(--dark-main); background-color: white;}
 }
 
 @keyframes nav_hover {
-    0% {color: white;}
-    100% {color: var(--red)}
+    0% {color: var(--simple-text);}
+    100% {color: var(--main)}
+}
+
+@keyframes toggle_hover {
+    0% {
+        border-radius: 10px;
+        box-shadow: 0 0 0 white;
+    }
+    100% {
+        border-radius: 10px;
+        box-shadow: 0 0 15px white;
+    }
+}
+
+@keyframes toggle_hover_light {
+    0% {
+        border-radius: 10px;
+        box-shadow: 0 0 0 black;
+    }
+    100% {
+        border-radius: 10px;
+        box-shadow: 0 0 15px black;
+    }
+}
+
+
+@keyframes nav_hover_light {
+    0% {
+        color: var(--simple-text);
+    }
+    100% {
+        color: var(--main);
+    }
+}
+
+@keyframes contact_button_hover_light {
+    0% {
+        color: var(--lighter-white); 
+        background-color: var(--dark-main);
+        box-shadow: none;
+    }
+    100% {
+        color: var(--main); 
+        background-color: white;
+        box-shadow: 0 0 15px black;
+    }
+}
+
+@keyframes cv_button_hover_light {
+    0% {color: white; background-color: var(--main); box-shadow: none;}
+    100% {color: var(--main); background-color: white; box-shadow: 0 0 15px black;}
 }
