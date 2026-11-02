@@ -1,11 +1,10 @@
 :root {
     --bg: black;
     --details: #2b2b2b;
-    --lighter-white: rgb(221, 221, 221);
+    --lighter-white: rgb(221 221 221);
     --simple-text: #aaa;
     --dark-main: #a22;
     --main: #f22;
-    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease, text-shadow 0.5s ease;
 }
 
 * {
@@ -15,9 +14,13 @@
 }
 
 *.light {
-    --main: rgb(253, 104, 188);
-    --dark-main: rgb(218, 90, 163);
+    --main: rgb(253 104 188);
+    --dark-main: rgb(218 90 163);
     --simple-text: #6a6a6a;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -40,9 +43,11 @@ nav {
 
 .main-nav {
     display: flex;
-    width: 40%;
+    min-width: 40%;
+    gap: 30px;
     justify-content: space-between;
     align-items: center;
+    white-space: nowrap;
 }
 
 nav div i {
@@ -54,7 +59,7 @@ nav div i {
 nav div i:hover {
     border-radius: 10px;
     box-shadow: 0 0 15px white;
-    animation-name: toggle_hover;
+    animation-name: toggle-hover;
     animation-duration: 0.5s;
 }
 
@@ -65,8 +70,31 @@ nav div i.light {
 nav div i.light:hover {
     border-radius: 10px;
     box-shadow: 0 0 15px black;
-    animation-name: toggle_hover_light;
+    animation-name: toggle-hover-light;
     animation-duration: 0.5s;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+nav button.lang-btn {
+    background-color: transparent;
+    color: var(--main);
+    border: 1px solid var(--main);
+    padding: 2px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+nav button.lang-btn:hover,
+nav button.lang-btn.light:hover {
+    color: var(--lighter-white);
+    background-color: var(--main);
+    box-shadow: none;
+    animation: none;
 }
 
 nav.scrolled {
@@ -82,7 +110,7 @@ nav a, button {
 
 nav a:hover {
     color: var(--main);
-    animation-name: nav_hover;
+    animation-name: nav-hover;
     animation-duration: 0.25s;
 }
 
@@ -92,7 +120,7 @@ nav a.light {
 
 nav a.light:hover {
     color: var(--main);
-    animation-name: nav_hover_light;
+    animation-name: nav-hover-light;
     animation-duration: 0.25s;
 }
 
@@ -107,25 +135,24 @@ nav button {
 nav button:hover {
     color: var(--dark-main);
     background-color: white;
-    animation-name: contact_button_hover;
+    animation-name: contact-button-hover;
     animation-duration: 0.25s;
 }
 
 nav button.light:hover {
     color: var(--main);
     box-shadow: 0 0 15px black;
-    animation-name: contact_button_hover_light;
+    animation-name: contact-button-hover-light;
     animation-duration: 0.5s;
 }
 
 
-
-
 .hero h1 {
     color: white;
-    font-family: 'Syne';
+    font-family: Syne, sans-serif;
     font-weight: 800;
     font-size: 5rem;
+    white-space: nowrap;
     margin-top: 15%;
     position: relative;
     z-index: 1;
@@ -168,7 +195,7 @@ nav button.light:hover {
 
 .hero-desc a:hover {
     color: var(--main);
-    animation-name: nav_hover;
+    animation-name: nav-hover;
     animation-duration: 0.25s;
 }
 
@@ -190,9 +217,9 @@ nav button.light:hover {
 }
 
 .download-cv:hover {
-    color: var(--dark-main); 
+    color: var(--dark-main);
     background-color: white;
-    animation-name: cv_button_hover;
+    animation-name: cv-button-hover;
     animation-duration: 0.5s;
 }
 
@@ -205,7 +232,7 @@ nav button.light:hover {
     color: var(--main);
     background-color: white;
     box-shadow: 0 0 15px black;
-    animation-name: cv_button_hover_light;
+    animation-name: cv-button-hover-light;
     animation-duration: 0.5s;
 }
 
@@ -227,37 +254,136 @@ i.light {
 }
 
 
-@keyframes contact_button_hover {
-    0% {color: white; background-color: var(--dark-main);}
-    100% {color: var(--dark-main); background-color: white;}
+section {
+    scroll-margin-top: 80px;
 }
 
-@keyframes cv_button_hover {
-    0% {color: white; background-color: var(--main);}
-    100% {color: var(--dark-main); background-color: white;}
+.section {
+    min-height: 60vh;
+    padding: 80px 0;
 }
 
-@keyframes nav_hover {
-    0% {color: var(--simple-text);}
-    100% {color: var(--main)}
+.section-title {
+    color: white;
+    font-family: Syne, sans-serif;
+    font-weight: 800;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    border-left: 5px solid var(--main);
+    padding-left: 15px;
 }
 
-@keyframes toggle_hover {
+.section-title.light {
+    color: black;
+}
+
+.section-content {
+    color: var(--simple-text);
+    font-family: monospace;
+    font-size: large;
+}
+
+.about-content {
+    max-width: 800px;
+}
+
+.about-content p {
+    color: var(--simple-text);
+    font-size: x-large;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.skills-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.skill-group h3 {
+    color: white;
+    font-family: Syne, sans-serif;
+    font-size: 1.75rem;
+    margin-bottom: 20px;
+}
+
+.skill-group h3.light {
+    color: black;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 350px;
+    list-style: none;
+}
+
+.skill-list li {
+    color: var(--simple-text);
+    border: 1px solid var(--main);
+    border-radius: 5px;
+    padding: 5px 15px;
+}
+
+.skill-list li:hover {
+    color: var(--main);
+    box-shadow: 0 0 10px var(--main);
+}
+
+
+@keyframes contact-button-hover {
+    0% {
+        color: white;
+        background-color: var(--dark-main);
+    }
+
+    100% {
+        color: var(--dark-main);
+        background-color: white;
+    }
+}
+
+@keyframes cv-button-hover {
+    0% {
+        color: white;
+        background-color: var(--main);
+    }
+
+    100% {
+        color: var(--dark-main);
+        background-color: white;
+    }
+}
+
+@keyframes nav-hover {
+    0% {
+        color: var(--simple-text);
+    }
+
+    100% {
+        color: var(--main);
+    }
+}
+
+@keyframes toggle-hover {
     0% {
         border-radius: 10px;
         box-shadow: 0 0 0 white;
     }
+
     100% {
         border-radius: 10px;
         box-shadow: 0 0 15px white;
     }
 }
 
-@keyframes toggle_hover_light {
+@keyframes toggle-hover-light {
     0% {
         border-radius: 10px;
         box-shadow: 0 0 0 black;
     }
+
     100% {
         border-radius: 10px;
         box-shadow: 0 0 15px black;
@@ -265,29 +391,40 @@ i.light {
 }
 
 
-@keyframes nav_hover_light {
+@keyframes nav-hover-light {
     0% {
         color: var(--simple-text);
     }
+
     100% {
         color: var(--main);
     }
 }
 
-@keyframes contact_button_hover_light {
+@keyframes contact-button-hover-light {
     0% {
-        color: var(--lighter-white); 
+        color: var(--lighter-white);
         background-color: var(--dark-main);
         box-shadow: none;
     }
+
     100% {
-        color: var(--main); 
+        color: var(--main);
         background-color: white;
         box-shadow: 0 0 15px black;
     }
 }
 
-@keyframes cv_button_hover_light {
-    0% {color: white; background-color: var(--main); box-shadow: none;}
-    100% {color: var(--main); background-color: white; box-shadow: 0 0 15px black;}
+@keyframes cv-button-hover-light {
+    0% {
+        color: white;
+        background-color: var(--main);
+        box-shadow: none;
+    }
+
+    100% {
+        color: var(--main);
+        background-color: white;
+        box-shadow: 0 0 15px black;
+    }
 }
