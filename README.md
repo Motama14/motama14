@@ -10,7 +10,7 @@
     <img src="./assets/linkedin.jpg" width="48" style="border-radius: 16px"/>
 </a>
 <a href="https://x.com/motama14">
-    <img src="./assets/x1.jpg" width="48" style="border-radius: 16px"/>
+    <img src="./assets/x.jpg" width="48" style="border-radius: 16px"/>
 </a>
 
 <br>
